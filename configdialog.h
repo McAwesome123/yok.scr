@@ -14,16 +14,16 @@ public:
 	BOOL command(WPARAM wparam, LPARAM lparam);
 	BOOL slider_changed(WPARAM wparam, HWND slider);
 	BOOL combobox_changed(HWND combobox);
-	
+
 private:
 	int encodef(float value);
 	float decodef(int value);
 	void refresh();
-	
-	template <typename K, typename V> K reverse_lookup(const std::map<K, V> &map, V value) {
-		return std::find_if(map.begin(), map.end(), [=](const auto &entry) {
+
+	template <typename K, typename V> K reverse_lookup(const std::map<K, V>& map, V value) {
+		return std::find_if(map.begin(), map.end(), [=](const auto& entry) {
 			return entry.second == value;
-		})->first;
+			})->first;
 	}
 
 	Registry m_registry;
