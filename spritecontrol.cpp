@@ -24,7 +24,7 @@ std::vector<Sprite *> SpriteGenerator::make(unsigned int n) const {
 
 	for (float y = -1.2f; y < 1.2f; y += 1.0f / sqrt(cfg.at(SpriteCount))) {
 		for (float x = -1.2f; x < 1.2f; x += 1.0f / sqrt(cfg.at(SpriteCount))) {
-			if (Noise::random() < (10.0f / 21.0f)) {
+			if (Noise::random() < (10.0f / 32.0f)) {	// Each impostor is +1.0f, each yorker is +2.0f
 				if (Noise::random() < (4.0f / 10.0f)) {
 					sprites.push_back(new Yoy(next_palette(), Point(x, y)));
 				} else {
