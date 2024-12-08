@@ -31,6 +31,11 @@ public:
 	Point &home();
 
 protected:
+	static double wrap(double home, double total, double min, double max);
+	static Point get_bounds_correction(Context &ctx);
+	Point get_screen_min_bounds(Context &ctx);
+	Point get_screen_max_bounds(Context &ctx);
+
 	void transform();
 	void update_trail(Context &ctx);
 	void increment_trail_index(const size_t amount = 1);
@@ -41,8 +46,11 @@ protected:
 	Point m_relpos;
 	Point m_home;
 	GLdouble m_size;
+
 	std::vector<TrailSprite> m_trail;
 	size_t m_trail_start_index;
+
+	double m_edge_boundary;
 };
 
 class Yonker : public Sprite {
@@ -84,10 +92,6 @@ public:
 
 	static size_t get_trail_length();
 	static double get_trail_space();
-
-	const Texture *get_texture();
-
-	Point target_position;
 
 protected:
 	virtual void draw_trail(Context &ctx) override;
